@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+import base64
+from google import genai
 
 class Module:
     def __init__(self, id, name, type="component", description=""):
@@ -88,9 +90,16 @@ class AutoLabSimulator:
     def toggle_power(self, module_id):
         self.modules[module_id].power_on = not self.modules[module_id].power_on
 
+def get_api_key():
+    if "GOOGLE_API_KEY" in st.secrets:
+        return st.secrets["GOOGLE_API_KEY"]
+    if os.environ.get("GOOGLE_API_KEY"):
+        return os.environ.get("GOOGLE_API_KEY")
+    return None
+
 def main():
-    st.set_page_config(layout="wide", page_title="AutoLab System & Simulator")
-    st.title("Симулятор и Схема системы AutoLab")
+    st.set_page_config(layout="wide", page_title="AutoLab Platform & AI Analyzer")
+    st.title("AutoLab AI — Схема, Симулятор и Анализ фото")
     
     if 'sim' not in st.session_state:
         st.session_state.sim = AutoLabSimulator()
@@ -104,8 +113,8 @@ def main():
     elif jetson.is_safe_mode:
         st.warning("⚠️ **ПРЕДУПРЕЖДЕНИЕ:** Jetson Orin в БЕЗОПАСНОМ РЕЖИМЕ. Нагрузка ограничена!")
 
-    # Controls
-    st.sidebar.header("Управление системой")
+    # Sidebar
+    st.sidebar.header("Управление симуляцией")
     desired_load = st.sidebar.slider("Запрошенная нагрузка Jetson Orin", 0.0, 1.0, 0.5)
     
     for mid, mod in sim.modules.items():
@@ -115,14 +124,18 @@ def main():
         if st.sidebar.button(f"Состояние {mod.name}", key=f"f_{mid}"):
             mod.is_faulty = not mod.is_faulty
 
+    st.sidebar.markdown("---")
+    st.sidebar.header("Настройки ИИ (Gemini)")
+    user_api_key = st.sidebar.text_input("Google API Key (если нет в Secrets):", type="password")
+
     # Update logic
     sim.update_simulation(desired_load)
 
     # Status Display
-    tab1, tab2, tab3 = st.tabs(["Интерактивная Схема", "Рисунок / Чертеж", "Описание Модулей"])
+    tab1, tab2, tab3, tab4 = st.tabs(["📊 Интерактивная Схема", "🤖 ИИ Анализ фото", "🖼️ Рисунок / Чертеж", "📖 Описание Модулей"])
     
     with tab1:
-        st.header("Статус модулей")
+        st.header("Статус модулей платформы")
         cols = st.columns(4)
         for i, (mid, mod) in enumerate(sim.modules.items()):
             status = "❌ ВЫКЛ"
@@ -168,10 +181,70 @@ def main():
                 }
             ''')
         except Exception as e:
-            st.info("Граф схемы загружен.")
+            st.info("Схема архитектуры отображена.")
 
     with tab2:
-        st.header("Схема платформы (Чертеж)")
+        st.header("ИИ Анализ чертежа / фото (Gemini 3.6)")
+        st.write("Выберите изображение схемы из проекта или загрузите свое фото:")
+
+        source_option = st.radio("Источник фото:", ["Фото проекта (image.png)", "Загрузить свое фото"])
+        
+        image_bytes = None
+        mime_type = "image/png"
+
+        if source_option == "Фото проекта (image.png)":
+            img_found_path = None
+            for p in ["image.png", "simulator/image.png", "../image.png"]:
+                if os.path.exists(p):
+                    img_found_path = p
+                    break
+            if img_found_path:
+                st.image(img_found_path, caption="Фото проекта image.png", width=600)
+                with open(img_found_path, "rb") as f:
+                    image_bytes = f.read()
+            else:
+                st.error("Файл image.png не найден на сервере.")
+        else:
+            uploaded = st.file_uploader("Загрузите фото для анализа...", type=["png", "jpg", "jpeg", "webp"])
+            if uploaded:
+                st.image(uploaded, caption="Загруженное фото", width=600)
+                image_bytes = uploaded.getvalue()
+                if uploaded.type:
+                    mime_type = uploaded.type
+
+        prompt_text = st.text_area("Запрос к ИИ:", "Подробно опиши, что изображено на этом фото/схеме. Перечисли все компоненты, надписи, соединения и их функциональное назначение.")
+
+        if st.button("🧠 Проанализировать через ИИ"):
+            if not image_bytes:
+                st.warning("Пожалуйста, выберите или загрузите фото.")
+            else:
+                api_key = user_api_key.strip() if user_api_key else get_api_key()
+                if not api_key:
+                    st.error("🔑 Не найден Google API Key. Пожалуйста, введите ваш API-ключ в меню слева (боковая панель) или добавьте его в Secrets приложения на Streamlit Cloud.")
+                else:
+                    try:
+                        with st.spinner("ИИ анализирует фото..."):
+                            client = genai.Client(api_key=api_key)
+                            encoded_img = base64.b64encode(image_bytes).decode('utf-8')
+                            
+                            interaction = client.interactions.create(
+                                model="gemini-3.6-flash",
+                                input=[
+                                    prompt_text,
+                                    {
+                                        "data": encoded_img,
+                                        "mime_type": mime_type
+                                    }
+                                ]
+                            )
+                            st.success("Анализ завершен!")
+                            st.markdown("### Результат анализа ИИ:")
+                            st.write(interaction.output_text)
+                    except Exception as ex:
+                        st.error(f"Ошибка при обращении к ИИ: {ex}")
+
+    with tab3:
+        st.header("Чертеж / Схема платформы (Изображение)")
         img_found = False
         for img_path in ["image.png", "simulator/image.png", "../image.png"]:
             if os.path.exists(img_path):
@@ -181,7 +254,7 @@ def main():
         if not img_found:
             st.warning("Изображение схемы не найдено.")
 
-    with tab3:
+    with tab4:
         st.header("Описание модулей")
         for mid, mod in sim.modules.items():
             st.markdown(f"**Модуль {mid}: {mod.name}** — {mod.description}")
