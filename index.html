@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHERIS | Next-Gen Artificial Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-glow {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+        }
+        .lang-btn.active {
+            background-color: #4f46e5;
+            color: white;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="hero-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+        <div class="text-2xl font-extrabold tracking-tighter">AETHER<span class="text-indigo-500">IS</span></div>
+        
+        <div class="flex items-center space-x-6">
+            <!-- Language Switcher -->
+            <div class="flex bg-white/10 p-1 rounded-full text-xs font-bold mr-4">
+                <button onclick="setLanguage('en')" id="btn-en" class="lang-btn active px-3 py-1 rounded-full transition">EN</button>
+                <button onclick="setLanguage('uk')" id="btn-uk" class="lang-btn px-3 py-1 rounded-full transition">UA</button>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+                <a href="#vision" data-en="Vision" data-uk="Візія" class="hover:text-white transition">Vision</a>
+                <a href="#tech" data-en="Technology" data-uk="Технології" class="hover:text-white transition">Technology</a>
+                <a href="#roadmap" data-en="Roadmap" data-uk="Дорожня карта" class="hover:text-white transition">Roadmap</a>
+                <a href="#invest" data-en="Invest" data-uk="Інвестиції" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-500 transition">Invest</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="px-8 py-20 md:py-32 max-w-5xl mx-auto text-center">
+        <h1 class="text-5xl md:text-8xl font-extrabold leading-tight mb-6">
+            <span data-en="Redefining Intelligence" data-uk="Переосмислення інтелекту">Redefining Intelligence</span> <br> 
+            <span class="gradient-text" data-en="Beyond Boundaries" data-uk="Поза межами">Beyond Boundaries</span>
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light" 
+           data-en="AETHERIS is building the next generation of autonomous AI systems designed to scale intelligence across decentralized networks."
+           data-uk="AETHERIS створює наступне покоління автономних систем ШІ, розроблених для масштабування інтелекту в децентралізованих мережах.">
+            AETHERIS is building the next generation of autonomous AI systems designed to scale intelligence across decentralized networks.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="https://www.dropbox.com/scl/fi/r5ksiykvf3jtrhn8rto4x/AETHERIS_Investor_Deck_16slides_HQ.pptx?rlkey=o0g7wn1uusifmdc20x5jncnxt&st=pbh9gg4t&dl=1" 
+               class="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition text-center shadow-xl shadow-white/10">
+               <span data-en="Download Investor Deck" data-uk="Завантажити презентацію">Download Investor Deck</span>
+            </a>
+            <a href="#vision" class="px-8 py-4 glass font-bold rounded-xl hover:bg-white/10 transition text-center" data-en="Learn More" data-uk="Дізнатися більше">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="px-8 py-20 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+                    <span data-en="The Vision of" data-uk="Візія проєкту">The Vision of</span> <br> 
+                    <span class="text-indigo-500">AETHERIS</span>
+                </h2>
+                <p class="text-gray-400 text-lg mb-6" 
+                   data-en="Current AI is centralized and limited. AETHERIS breaks these chains by implementing a distributed intelligence layer that allows for unprecedented scaling and security."
+                   data-uk="Сучасний ШІ є централізованим і обмеженим. AETHERIS розриває ці ланцюги, впроваджуючи розподілений шар інтелекту, що забезпечує безпрецедентне масштабування та безпеку.">
+                    Current AI is centralized and limited. AETHERIS breaks these chains by implementing a distributed intelligence layer that allows for unprecedented scaling and security.
+                </p>
+                <p class="text-gray-400 text-lg" 
+                   data-en="Our goal is to create an ecosystem where AI is not just a tool, but a sovereign infrastructure for the digital economy."
+                   data-uk="Наша мета — створити екосистему, де ШІ є не просто інструментом, а суверенною інфраструктурою для цифрової економіки.">
+                    Our goal is to create an ecosystem where AI is not just a tool, but a sovereign infrastructure for the digital economy.
+                </p>
+            </div>
+            <div class="glass p-8 rounded-3xl text-center">
+                <div class="text-6xl font-bold gradient-text mb-2">10x</div>
+                <div class="text-gray-400 uppercase tracking-widest text-sm" data-en="Efficiency Increase" data-uk="Збільшення ефективності">Efficiency Increase</div>
+                <div class="h-px bg-white/10 my-6"></div>
+                <div class="text-6xl font-bold gradient-text mb-2">Zero</div>
+                <div class="text-gray-400 uppercase tracking-widest text-sm" data-en="Centralized Failure" data-uk="Централізованих збоїв">Centralized Failure</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="tech" class="px-8 py-20 bg-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-en="Core Technology" data-uk="Основні технології">Core Technology</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-3xl hover:border-indigo-500/50 transition group">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-lg mb-6 flex items-center justify-center font-bold">01</div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-indigo-400 transition" data-en="Neural Mesh" data-uk="Нейронна мережа">Neural Mesh</h3>
+                    <p class="text-gray-400 leading-relaxed" 
+                       data-en="A decentralized network of nodes that share cognitive load, reducing latency and costs."
+                       data-uk="Децентралізована мережа вузлів, що розподіляють когнітивне навантаження, зменшуючи затримки та витрати.">
+                       A decentralized network of nodes that share cognitive load, reducing latency and costs.
+                    </p>
+                </div>
+                <div class="glass p-8 rounded-3xl hover:border-purple-500/50 transition group">
+                    <div class="w-12 h-12 bg-purple-600 rounded-lg mb-6 flex items-center justify-center font-bold">02</div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-purple-400 transition" data-en="Adaptive Learning" data-uk="Адаптивне навчання">Adaptive Learning</h3>
+                    <p class="text-gray-400 leading-relaxed" 
+                       data-en="Real-time evolutionary algorithms that adapt to new data without needing full retraining."
+                       data-uk="Еволюційні алгоритми в реальному часі, які адаптуються до нових даних без потреби в повному перенавчанні.">
+                       Real-time evolutionary algorithms that adapt to new data without needing full retraining.
+                    </p>
+                </div>
+                <div class="glass p-8 rounded-3xl hover:border-pink-500/50 transition group">
+                    <div class="w-12 h-12 bg-pink-600 rounded-lg mb-6 flex items-center justify-center font-bold">03</div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-pink-400 transition" data-en="Sovereign Data" data-uk="Суверенні дані">Sovereign Data</h3>
+                    <p class="text-gray-400 leading-relaxed" 
+                       data-en="Encrypted data ownership ensuring that users and investors maintain control over their assets."
+                       data-uk="Зашифроване володіння даними, що гарантує контроль користувачів та інвесторів над своїми активами.">
+                       Encrypted data ownership ensuring that users and investors maintain control over their assets.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="px-8 py-20 max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-en="Strategic Roadmap" data-uk="Стратегічна дорожня карта">Strategic Roadmap</h2>
+        <div class="space-y-12">
+            <div class="flex gap-6">
+                <div class="text-indigo-500 font-bold text-xl">2024</div>
+                <div class="glass p-6 rounded-2xl flex-1">
+                    <h4 class="font-bold mb-2 text-lg" data-en="Phase I: Foundation" data-uk="Фаза I: Фундамент">Phase I: Foundation</h4>
+                    <p class="text-gray-400" 
+                       data-en="Core architecture development, seed funding round, and initial prototype deployment."
+                       data-uk="Розробка базової архітектури, раунд посійного фінансування та розгортання першого прототипу.">
+                       Core architecture development, seed funding round, and initial prototype deployment.
+                    </p>
+                </div>
+            </div>
+            <div class="flex gap-6">
+                <div class="text-purple-500 font-bold text-xl">2025</div>
+                <div class="glass p-6 rounded-2xl flex-1">
+                    <h4 class="font-bold mb-2 text-lg" data-en="Phase II: Scaling" data-uk="Фаза II: Масштабування">Phase II: Scaling</h4>
+                    <p class="text-gray-400" 
+                       data-en="Network expansion, strategic partnerships, and Beta launch of the AETHERIS Mesh."
+                       data-uk="Розширення мережі, стратегічне партнерство та бета-запуск AETHERIS Mesh.">
+                       Network expansion, strategic partnerships, and Beta launch of the AETHERIS Mesh.
+                    </p>
+                </div>
+            </div>
+            <div class="flex gap-6">
+                <div class="text-pink-500 font-bold text-xl">2026</div>
+                <div class="glass p-6 rounded-2xl flex-1">
+                    <h4 class="font-bold mb-2 text-lg" data-en="Phase III: Ecosystem" data-uk="Фаза III: Екосистема">Phase III: Ecosystem</h4>
+                    <p class="text-gray-400" 
+                       data-en="Full public release, integration with global AI markets, and governance implementation."
+                       data-uk="Повний публічний реліз, інтеграція з глобальними ринками ШІ та впровадження системи управління.">
+                       Full public release, integration with global AI markets, and governance implementation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section id="invest" class="px-8 py-20 max-w-4xl mx-auto text-center">
+        <div class="glass p-12 rounded-[3rem] border-indigo-500/30 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-600/20 blur-3xl"></div>
+            <h2 class="text-4xl md:text-6xl font-bold mb-6" data-en="Ready to shape the future?" data-uk="Готові створювати майбутнє?">Ready to shape the future?</h2>
+            <p class="text-gray-400 text-lg mb-10" 
+               data-en="AETHERIS is now opening select slots for strategic investment partners. Join the evolution of intelligence."
+               data-uk="AETHERIS відкриває обмежені слоти для стратегічних інвестиційних партнерів. Приєднуйтесь до еволюції інтелекту.">
+                AETHERIS is now opening select slots for strategic investment partners. Join the evolution of intelligence.
+            </p>
+            <a href="mailto:contact@autolab-ai.com" class="px-10 py-5 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition inline-block text-lg shadow-lg shadow-indigo-500/20"
+               data-en="Contact for Investment" data-uk="Зв'язатися для інвестицій">
+                Contact for Investment
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="px-8 py-12 text-center text-gray-600 text-sm border-t border-white/5">
+        <p>&copy; 2024 AETHERIS AI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+        }
+    </script>
+
+</body>
+</html>
