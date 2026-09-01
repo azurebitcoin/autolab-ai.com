@@ -224,18 +224,25 @@ def main():
                 else:
                     try:
                         with st.spinner("ИИ анализирует фото..."):
+                            from google.genai import types
+
                             client = genai.Client(api_key=api_key)
-                            encoded_img = base64.b64encode(image_bytes).decode('utf-8')
+                            
+                            # Правильное формирование контента для новой версии API
+                            content = types.Content(
+                                role="user",
+                                parts=[
+                                    types.Part.from_text(text=prompt_text),
+                                    types.Part.from_bytes(
+                                        data=image_bytes,
+                                        mime_type=mime_type
+                                    )
+                                ]
+                            )
                             
                             interaction = client.interactions.create(
                                 model="gemini-3.6-flash",
-                                input=[
-                                    prompt_text,
-                                    {
-                                        "data": encoded_img,
-                                        "mime_type": mime_type
-                                    }
-                                ]
+                                input=[content]
                             )
                             st.success("Анализ завершен!")
                             st.markdown("### Результат анализа ИИ:")
