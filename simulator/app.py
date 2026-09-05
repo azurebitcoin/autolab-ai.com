@@ -228,21 +228,24 @@ def main():
 
                             client = genai.Client(api_key=api_key)
                             
-                            # Правильное формирование контента для новой версии API
-                            content = types.Content(
-                                role="user",
-                                parts=[
-                                    types.Part.from_text(text=prompt_text),
-                                    types.Part.from_bytes(
-                                        data=image_bytes,
-                                        mime_type=mime_type
-                                    )
-                                ]
-                            )
+                            # Правильно формируем содержимое
+                            contents = [
+                                types.Content(
+                                    role="user",
+                                    parts=[
+                                        types.Part.from_text(text=prompt_text),
+                                        types.Part.from_bytes(
+                                            data=image_bytes,
+                                            mime_type=mime_type
+                                        )
+                                    ]
+                                )
+                            ]
                             
+                            # Попробуем передать contents вместо input
                             interaction = client.interactions.create(
                                 model="gemini-3.6-flash",
-                                input=[content]
+                                contents=contents
                             )
                             st.success("Анализ завершен!")
                             st.markdown("### Результат анализа ИИ:")
