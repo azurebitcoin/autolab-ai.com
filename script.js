@@ -21,10 +21,9 @@ const translations = {
         metric_sensors: "Камери HDR + Радари",
         metric_coverage: "Круговий Living Context",
 
-        tag_front_cams: "3x Front HDR 120dB",
+        tag_front_cams: "3x HDR 120dB Камери",
         tag_radar: "77GHz FMCW Радар",
         tag_edge: "Edge Context AI",
-        tag_rear_cams: "3x Rear Surround",
         status_online: "AETHERIS Core: Online • 360° Multi-Sensor Fusion",
 
         about_tag: "ЧОМУ ЦЕ ПОТРІБНО",
@@ -103,7 +102,7 @@ const translations = {
         b_legal: "Юридичний та кібербезпековий супровід",
 
         hw_breakdown_title: "Деталізація апаратних витрат ($35,000)",
-        hw_1: "8 HDR-камер, GMSL2 плата, кабелі",
+        hw_1: "3 HDR-камери, GMSL2 плата, кабелі",
         hw_2: "Edge AI комп’ютер, NVMe, охолодження",
         hw_3: "2 радари міліметрового діапазону",
         hw_4: "GNSS, IMU, CAN-шлюз та синхронізація",
@@ -156,10 +155,9 @@ const translations = {
         metric_sensors: "HDR Cameras + Radars",
         metric_coverage: "360° Living Context",
 
-        tag_front_cams: "3x Front HDR 120dB",
+        tag_front_cams: "3x HDR 120dB Cameras",
         tag_radar: "77GHz FMCW Radar",
         tag_edge: "Edge Context AI",
-        tag_rear_cams: "3x Rear Surround",
         status_online: "AETHERIS Core: Online • 360° Multi-Sensor Fusion",
 
         about_tag: "THE OPPORTUNITY",
@@ -238,7 +236,7 @@ const translations = {
         b_legal: "Legal, IP & Cyber Protection Advisory",
 
         hw_breakdown_title: "Hardware Cost Breakdown ($35,000)",
-        hw_1: "8 HDR Cameras, GMSL2 Interface, Cables",
+        hw_1: "3 HDR Cameras, GMSL2 Interface, Cables",
         hw_2: "Edge AI Industrial PC, NVMe, Active Cooling",
         hw_3: "2 Automotive 77GHz Millimeter-Wave Radars",
         hw_4: "GNSS, IMU, CAN-Bus Gateway & Sync Hub",
