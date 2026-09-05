@@ -128,7 +128,12 @@ const translations = {
         opt_strategic: "Стратегічний партнер (Automotive / Security)",
         btn_request_deck: "Запитати Pitch Deck & Зустріч",
         form_success: "✓ Дякуємо! Ваш запит прийнято. Ми надішлемо матеріали на вказану пошту протягом кількох годин.",
-        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. Всі права захищено."
+        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. Всі права захищено.",
+        
+        // Auth overlay translations
+        auth_subtitle: "Захищений інвестиційний портал. Введіть пароль доступу.",
+        auth_btn: "Увійти",
+        auth_error: "Невірний пароль. Спробуйте ще раз."
     },
     en: {
         nav_about: "About Project",
@@ -258,7 +263,12 @@ const translations = {
         opt_strategic: "Strategic Partner (Automotive / Security)",
         btn_request_deck: "Request Pitch Deck & Meeting",
         form_success: "✓ Thank you! Your request has been received. We will deliver the investor package to your email shortly.",
-        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. All rights reserved."
+        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. All rights reserved.",
+
+        // Auth overlay translations
+        auth_subtitle: "Protected investor portal. Enter access password.",
+        auth_btn: "Login",
+        auth_error: "Incorrect password. Please try again."
     }
 };
 
@@ -308,5 +318,36 @@ function handleFormSubmit(e) {
 
 // Initial load
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if password protection is passed
+    const isAuth = sessionStorage.getItem('autolab_auth') === 'true';
+    const authOverlay = document.getElementById('authOverlay');
+    
+    if (isAuth) {
+        authOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    } else {
+        authOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
     switchLanguage(currentLang);
 });
+
+// Password verification function
+function handleAuth(e) {
+    e.preventDefault();
+    const passwordInput = document.getElementById('authPassword').value;
+    const authError = document.getElementById('authError');
+    const authOverlay = document.getElementById('authOverlay');
+
+    if (passwordInput === '123123aA') {
+        sessionStorage.setItem('autolab_auth', 'true');
+        authOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        authError.style.display = 'none';
+    } else {
+        authError.style.display = 'block';
+        document.getElementById('authPassword').value = '';
+    }
+}
+

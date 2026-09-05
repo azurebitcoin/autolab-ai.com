@@ -12,6 +12,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Password Protection Overlay -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-card">
+            <div class="brand-logo-icon auth-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+            </div>
+            <h2>AUTOLAB <span class="accent-dot">.AI</span></h2>
+            <p class="auth-subtitle" data-i18n="auth_subtitle">Захищений інвестиційний портал. Введіть пароль доступу.</p>
+            <form onsubmit="handleAuth(event)" class="auth-form">
+                <div class="auth-input-group">
+                    <input type="password" id="authPassword" placeholder="Пароль / Password" required autocomplete="current-password">
+                    <button type="submit" class="btn-primary" data-i18n="auth_btn">Увійти</button>
+                </div>
+                <div id="authError" class="auth-error" style="display: none;" data-i18n="auth_error">Невірний пароль. Спробуйте ще раз.</div>
+            </form>
+        </div>
+    </div>
+
     <!-- Background Glows -->
     <div class="bg-glow glow-1"></div>
     <div class="bg-glow glow-2"></div>
