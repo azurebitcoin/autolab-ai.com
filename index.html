@@ -1,50 +1,567 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Relations</title>
+    <title>AutoLab AI | AETHERIS Automotive MVP — Investor Relations</title>
+    <meta name="description" content="AETHERIS by AutoLab AI: Next-generation Situational Awareness & Living Security Context for vehicles. Investment opportunity $220k MVP Round.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">InvestorSite</div>
-            <div class="lang-switch">
-                <button onclick="setLanguage('uk')">UA</button>
-                <button onclick="setLanguage('en')">EN</button>
+    <!-- Background Glows -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <div class="brand-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <span class="brand-text">AUTOLAB<span class="accent-dot">.AI</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#about" class="nav-link" data-i18n="nav_about">Про проєкт</a>
+                <a href="#technology" class="nav-link" data-i18n="nav_tech">Технологія</a>
+                <a href="#features" class="nav-link" data-i18n="nav_features">Функції</a>
+                <a href="#roadmap" class="nav-link" data-i18n="nav_roadmap">План робіт</a>
+                <a href="#budget" class="nav-link" data-i18n="nav_budget">Бюджет</a>
+                <a href="#contact" class="nav-link" data-i18n="nav_contact">Контакти</a>
             </div>
-        </nav>
+
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" id="btn-uk" onclick="switchLanguage('uk')">UA</button>
+                    <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">EN</button>
+                </div>
+                <a href="#invest-cta" class="btn-primary" data-i18n="nav_invest_btn">Інвестувати</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge-pill">
+                    <span class="badge-dot"></span>
+                    <span data-i18n="hero_badge">MVP РАУНД • $220,000 • 6 МІСЯЦІВ</span>
+                </div>
+                
+                <h1 class="hero-title" data-i18n="hero_title">
+                    Штучний Інтелект Ситуаційної Безпеки для Автомобілів
+                </h1>
+
+                <p class="hero-subtitle" data-i18n="hero_subtitle">
+                    AETHERIS Automotive MVP — автономна система кругового огляду з 8 HDR-камерами, 2 радарами та Edge AI. Перетворює розрізнені потоки сенсорів у Living Security Context у реальному часі.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#budget" class="btn-primary-large" data-i18n="hero_btn_primary">
+                        Інвестиційний Меморандум
+                    </a>
+                    <a href="#technology" class="btn-secondary-large" data-i18n="hero_btn_secondary">
+                        Огляд Архітектури
+                    </a>
+                </div>
+
+                <!-- Live Key Numbers -->
+                <div class="hero-metrics">
+                    <div class="metric-card">
+                        <div class="metric-val">$220K</div>
+                        <div class="metric-lbl" data-i18n="metric_budget">Цільовий бюджет MVP</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-val">6 <span class="unit" data-i18n="metric_months_unit">міс.</span></div>
+                        <div class="metric-lbl" data-i18n="metric_timeline">До ходового авто</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-val">8 + 2</div>
+                        <div class="metric-lbl" data-i18n="metric_sensors">Камери HDR + Радари</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-val">360°</div>
+                        <div class="metric-lbl" data-i18n="metric_coverage">Круговий Living Context</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="vehicle-card-wrapper">
+                    <div class="vehicle-preview">
+                        <img src="image.png" alt="AETHERIS Autonomous Security Vehicle Prototype" class="vehicle-img" onerror="this.src='https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1200&q=80'">
+                        <div class="overlay-scanline"></div>
+                        <div class="tech-tag tag-front" data-i18n="tag_front_cams">3x Front HDR 120dB</div>
+                        <div class="tech-tag tag-radar" data-i18n="tag_radar">77GHz FMCW Radar</div>
+                        <div class="tech-tag tag-edge" data-i18n="tag_edge">Edge Context AI</div>
+                        <div class="tech-tag tag-rear" data-i18n="tag_rear_cams">3x Rear Surround</div>
+                    </div>
+                    <div class="vehicle-status-bar">
+                        <div class="status-indicator">
+                            <span class="pulse-dot"></span>
+                            <span data-i18n="status_online">AETHERIS Core: Online • 360° Multi-Sensor Fusion</span>
+                        </div>
+                        <span class="status-badge">GMSL2 / CAN Bus</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section id="hero">
-            <h1 data-lang="uk">Ласкаво просимо до нашої інвестиційної платформи</h1>
-            <h1 data-lang="en" style="display: none;">Welcome to our investment platform</h1>
-            <p data-lang="uk">Ми створюємо майбутнє разом з вами.</p>
-            <p data-lang="en" style="display: none;">We are building the future together with you.</p>
-        </section>
+    <!-- Problem & Solution Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="about_tag">ЧОМУ ЦЕ ПОТРІБНО</span>
+                <h2 class="section-title" data-i18n="about_title">Понад звичайний ADAS: Інтелект Захисту</h2>
+                <p class="section-desc" data-i18n="about_desc">
+                    Сучасні автосистеми лише запобігають ДТП або записують відео. Вони «сліпі» до загроз безпеки, переслідування, спостереження та зміни намірів об'єктів.
+                </p>
+            </div>
 
-        <section id="services">
-            <h2 data-lang="uk">Наші Послуги</h2>
-            <h2 data-lang="en" style="display: none;">Our Services</h2>
-            <div class="services-container">
-                <div class="service-card">
-                    <h3 data-lang="uk">Фінансове консультування</h3>
-                    <h3 data-lang="en" style="display: none;">Financial Consulting</h3>
-                    <p data-lang="uk">Допомагаємо приймати зважені інвестиційні рішення.</p>
-                    <p data-lang="en" style="display: none;">Helping you make informed investment decisions.</p>
+            <div class="grid-2">
+                <div class="card card-glow-red">
+                    <div class="card-icon-danger">✕</div>
+                    <h3 data-i18n="problem_title">Обмеження класичних систем</h3>
+                    <ul class="feature-list danger-list">
+                        <li data-i18n="problem_1">Відеореєстратори пишуть окремі файли без просторового та часового зв'язку</li>
+                        <li data-i18n="problem_2">ADAS орієнтований лише на утримання смуги та екстрене гальмування</li>
+                        <li data-i18n="problem_3">Відсутність розуміння намірів: хто йде за авто, чи повторюється об'єкт на маршруті</li>
+                        <li data-i18n="problem_4">Оператор перевантажений десятками розрізнених екранів і хибних тривог</li>
+                    </ul>
                 </div>
-                <div class="service-card">
-                    <h3 data-lang="uk">Управління активами</h3>
-                    <h3 data-lang="en" style="display: none;">Asset Management</h3>
-                    <p data-lang="uk">Ефективне управління вашим капіталом для максимального зростання.</p>
-                    <p data-lang="en" style="display: none;">Efficient management of your capital for maximum growth.</p>
+
+                <div class="card card-glow-green">
+                    <div class="card-icon-success">✓</div>
+                    <h3 data-i18n="solution_title">Рішення AETHERIS</h3>
+                    <ul class="feature-list success-list">
+                        <li data-i18n="solution_1"><strong>Living Security Context:</strong> єдина картина розвитку подій навколо авто</li>
+                        <li data-i18n="solution_2"><strong>Re-Identification:</strong> супровід людей та авто при переході між камерами</li>
+                        <li data-i18n="solution_3"><strong>Ф’южн сенсорів:</strong> перехресне підтвердження камер та 77GHz радарів</li>
+                        <li data-i18n="solution_4"><strong>Пояснюваний ШІ:</strong> прозорі обґрунтування загроз для оператора</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Technology & Hardware Architecture -->
+    <section id="technology" class="section section-darker">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="tech_tag">ТЕХНІЧНИЙ СКЛАД</span>
+                <h2 class="section-title" data-i18n="tech_title">Апаратна та Програмна Архітектура</h2>
+                <p class="section-desc" data-i18n="tech_desc">
+                    Використання готових індустріальних компонентів мінімізує R&D ризики та забезпечує максимальну концентрацію на розробці алгоритмів контексту.
+                </p>
+            </div>
+
+            <div class="tech-grid">
+                <!-- 1. Sensors -->
+                <div class="tech-card">
+                    <div class="tech-img-box">
+                        <img src="https://images.unsplash.com/photo-1558441719-8b489c638a10?auto=format&fit=crop&w=600&q=80" alt="Automotive HDR Sensor Array">
+                    </div>
+                    <div class="tech-card-body">
+                        <span class="tech-sub">01. SENSORS SUITE</span>
+                        <h3 data-i18n="tech_sensors_title">8x HDR Камер + 2 Радари</h3>
+                        <p data-i18n="tech_sensors_desc">
+                            3 передні камери (вузька, середня, ультраширока), 3 задні, 2 бічні з GMSL2 передачею даних. Два 77GHz радари для вимірювання швидкості та відстані.
+                        </p>
+                        <div class="tech-specs">
+                            <span>120dB Dynamic Range</span>
+                            <span>IP67 / Automotive</span>
+                            <span>77GHz FMCW</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Edge Compute -->
+                <div class="tech-card">
+                    <div class="tech-img-box">
+                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=600&q=80" alt="Edge AI Jetson Computing Hardware">
+                    </div>
+                    <div class="tech-card-body">
+                        <span class="tech-sub">02. COMPUTE UNIT</span>
+                        <h3 data-i18n="tech_edge_title">Локальний Edge AI Комп'ютер</h3>
+                        <p data-i18n="tech_edge_desc">
+                            Платформа промислового класу з апаратним прискоренням нейромереж. Локальна обробка 8 потоків у реальному часі без необхідності постійної хмари.
+                        </p>
+                        <div class="tech-specs">
+                            <span>NVIDIA Jetson / x86 AI</span>
+                            <span>M.2 NVMe Storage</span>
+                            <span>Active Thermal Shield</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Context Engine -->
+                <div class="tech-card">
+                    <div class="tech-img-box">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Living Security Context Engine">
+                    </div>
+                    <div class="tech-card-body">
+                        <span class="tech-sub">03. CONTEXT ENGINE</span>
+                        <h3 data-i18n="tech_engine_title">Living Security Context Core</h3>
+                        <p data-i18n="tech_engine_desc">
+                            Унікальний рушій відстеження траєкторій, аналізу часових патернів та оцінки ризику. Зіставляє повторювані спостереження на всьому маршруті руху.
+                        </p>
+                        <div class="tech-specs">
+                            <span>Cross-camera Tracking</span>
+                            <span>Temporal Reasoning</span>
+                            <span>Low Latency UI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 Key Features of MVP -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="feat_tag">ФУНКЦІОНАЛ MVP</span>
+                <h2 class="section-title" data-i18n="feat_title">5 Ключових Можливостей Демонстратора</h2>
+            </div>
+
+            <div class="grid-3">
+                <div class="feature-box">
+                    <div class="feature-num">01</div>
+                    <h3 data-i18n="feat_1_title">Виявлення Людей та Авто</h3>
+                    <p data-i18n="feat_1_desc">Точна детекція об'єктів навколо машини в радіусі 360° вдень, уночі та за будь-якої погоди.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-num">02</div>
+                    <h3 data-i18n="feat_2_title">Сектор та Траєкторія</h3>
+                    <p data-i18n="feat_2_desc">Визначення точного сектора знаходження, напрямку руху, швидкості наближення та дистанції.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-num">03</div>
+                    <h3 data-i18n="feat_3_title">Міжкамерний Супровід</h3>
+                    <p data-i18n="feat_3_desc">Безшовне відстеження об'єкта, який виходить з поля зору передньої камери й з'являється на бічній або задній.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-num">04</div>
+                    <h3 data-i18n="feat_4_title">Радарно-Візуальний Ф’южн</h3>
+                    <p data-i18n="feat_4_desc">Зіставлення візуальних маркерів із доплерівськими відбитками радарів для усунення сліпих зон і туману.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-num">05</div>
+                    <h3 data-i18n="feat_5_title">Часова Послідовність Подій</h3>
+                    <p data-i18n="feat_5_desc">Складання структурованого журналу ситуації: хто, коли та скільки разів фіксувався поруч з об'єктом охорони.</p>
+                </div>
+
+                <div class="feature-box highlight-box">
+                    <div class="feature-num">★</div>
+                    <h3 data-i18n="feat_6_title">Інтерфейс Оператора</h3>
+                    <p data-i18n="feat_6_desc">Інтуїтивний сенсорний екран для водія чи агента служби безпеки з візуалізацією загроз у реальному часі.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap & Timeline -->
+    <section id="roadmap" class="section section-darker">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="roadmap_tag">ГРАФІК РОБІТ</span>
+                <h2 class="section-title" data-i18n="roadmap_title">6-Місячний План Створення MVP</h2>
+                <p class="section-desc" data-i18n="roadmap_desc">
+                    Чіткі послідовні віхи: від оренди лабораторії та стендових тестів до повноцінного тестового автомобіля на дорозі.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-indicator">M1</div>
+                    <div class="step-content">
+                        <span class="step-time" data-i18n="step_1_time">Місяць 1</span>
+                        <h4 data-i18n="step_1_title">Лабораторія та Закупівля</h4>
+                        <p data-i18n="step_1_desc">Оренда гаражного боксу (90–120 м²), купівля базового автомобіля, фіналізація архітектури та замовлення сенсорів.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-indicator">M2</div>
+                    <div class="step-content">
+                        <span class="step-time" data-i18n="step_2_time">Місяць 2</span>
+                        <h4 data-i18n="step_2_title">Стендові Тести Сенсорів</h4>
+                        <p data-i18n="step_2_desc">Лабораторна інтеграція камер, радарів та Edge-ПК. Тестування нейромереж детекції та перевірка GMSL2 зв'язку.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-indicator">M3</div>
+                    <div class="step-content">
+                        <span class="step-time" data-i18n="step_3_time">Місяць 3</span>
+                        <h4 data-i18n="step_3_title">Інженерне Проєктування</h4>
+                        <p data-i18n="step_3_desc">Розробка плати стабілізації живлення, захищених кронштейнів камер, термоізоляції та кабельних джгутів.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-indicator">M4</div>
+                    <div class="step-content">
+                        <span class="step-time" data-i18n="step_4_time">Місяць 4</span>
+                        <h4 data-i18n="step_4_title">Монтаж та Інтеграція в Авто</h4>
+                        <p data-i18n="step_4_desc">Установка апаратного комплексу в автомобіль. Синхронізація CAN-шини, GNSS/IMU та перший запуск застосунку оператора.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-indicator">M5</div>
+                    <div class="step-content">
+                        <span class="step-time" data-i18n="step_5_time">Місяць 5</span>
+                        <h4 data-i18n="step_5_title">Context Engine & Дорожні Тести</h4>
+                        <p data-i18n="step_5_desc">Калібрування Context Engine у русі: денні, нічні та дощові випробування. Перевірка сценаріїв виявлення спостереження.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-indicator">M6</div>
+                    <div class="step-content">
+                        <span class="step-time" data-i18n="step_6_time">Місяць 6</span>
+                        <h4 data-i18n="step_6_title">Фіналізація та Демонстрація</h4>
+                        <p data-i18n="step_6_desc">Стрес-тестування стабільності. Презентації для клієнтів (Executive Protection, спецслужби) та Seed-інвесторів.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget & Investment Breakdown -->
+    <section id="budget" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="budget_tag">ФІНАНСОВА СТРУКТУРА</span>
+                <h2 class="section-title" data-i18n="budget_title">Розподіл Бюджету $220,000</h2>
+                <p class="section-desc" data-i18n="budget_desc">
+                    Бюджет розрахований на повний 6-місячний цикл створення діючого демонстратора з урахуванням технічного резерву.
+                </p>
+            </div>
+
+            <div class="budget-grid">
+                <div class="budget-card main-budget">
+                    <div class="budget-header">
+                        <span class="total-label" data-i18n="total_round">Загальний розмір раунду</span>
+                        <span class="total-amount">$220,000</span>
+                    </div>
+
+                    <div class="budget-items">
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_team">Основна інженерна команда (6 міс.)</span>
+                                <span class="b-val">$104,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 47.3%;"></div></div>
+                        </div>
+
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_hw">Сенсори, Edge-комп’ютер, комплектуючі</span>
+                                <span class="b-val">$35,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 15.9%;"></div></div>
+                        </div>
+
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_lab">Оренда та оснащення лабораторії</span>
+                                <span class="b-val">$25,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 11.4%;"></div></div>
+                        </div>
+
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_car">Базовий автомобіль та підготовка</span>
+                                <span class="b-val">$20,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 9.1%;"></div></div>
+                        </div>
+
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_reserve">Технічний та валютний резерв</span>
+                                <span class="b-val">$17,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 7.7%;"></div></div>
+                        </div>
+
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_ext">Зовнішні інженерні роботи (Thermal/Mech)</span>
+                                <span class="b-val">$10,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 4.5%;"></div></div>
+                        </div>
+
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_expert">Консультації Executive Protection & Кримінолог</span>
+                                <span class="b-val">$6,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 2.7%;"></div></div>
+                        </div>
+
+                        <div class="b-item">
+                            <div class="b-info">
+                                <span class="b-name" data-i18n="b_legal">Юридичний та кібербезпековий супровід</span>
+                                <span class="b-val">$3,000</span>
+                            </div>
+                            <div class="b-bar"><div class="b-fill" style="width: 1.4%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware details card -->
+                <div class="budget-card hw-card">
+                    <h3 data-i18n="hw_breakdown_title">Деталізація апаратних витрат ($35,000)</h3>
+                    <ul class="hw-list">
+                        <li>
+                            <span data-i18n="hw_1">8 HDR-камер, GMSL2 плата, кабелі</span>
+                            <strong>$10,000</strong>
+                        </li>
+                        <li>
+                            <span data-i18n="hw_2">Edge AI комп’ютер, NVMe, охолодження</span>
+                            <strong>$8,000</strong>
+                        </li>
+                        <li>
+                            <span data-i18n="hw_3">2 радари міліметрового діапазону</span>
+                            <strong>$3,000</strong>
+                        </li>
+                        <li>
+                            <span data-i18n="hw_4">GNSS, IMU, CAN-шлюз та синхронізація</span>
+                            <strong>$3,000</strong>
+                        </li>
+                        <li>
+                            <span data-i18n="hw_5">Автомобільне живлення, захист АКБ</span>
+                            <strong>$3,000</strong>
+                        </li>
+                        <li>
+                            <span data-i18n="hw_6">Сенсорний дисплей та мережевий шлюз</span>
+                            <strong>$2,000</strong>
+                        </li>
+                        <li>
+                            <span data-i18n="hw_7">Запасні компоненти, доставка та мито</span>
+                            <strong>$6,000</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience & Market -->
+    <section class="section section-darker">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="market_tag">ЦІЛЬОВИЙ РИНОК</span>
+                <h2 class="section-title" data-i18n="market_title">Для Кого Створюється AETHERIS</h2>
+            </div>
+
+            <div class="grid-3">
+                <div class="market-card">
+                    <div class="market-img">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80" alt="Executive Protection & VIP Security">
+                    </div>
+                    <div class="market-body">
+                        <h3 data-i18n="m_1_title">Служби Executive Protection</h3>
+                        <p data-i18n="m_1_desc">Захист перших осіб та VIP-кортежів. Виявлення спостереження, хвостів та небезпечних сценаріїв завчасно.</p>
+                    </div>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-img">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="High-Value Transport & Logistics">
+                    </div>
+                    <div class="market-body">
+                        <h3 data-i18n="m_2_title">Інкасація та Цінні Вантажі</h3>
+                        <p data-i18n="m_2_desc">Моніторинг периметра при зупинках, завантаженні та русі маршрутом високого ступеня ризику.</p>
+                    </div>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-img">
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=600&q=80" alt="Autonomous & Tactical Fleets">
+                    </div>
+                    <div class="market-body">
+                        <h3 data-i18n="m_3_title">Тактичні та Безпілотні Флоти</h3>
+                        <p data-i18n="m_3_desc">Інтеграція в автономні платформи для повного розуміння тактичної обстановки без оператора на борту.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor CTA Section -->
+    <section id="invest-cta" class="section cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-badge" data-i18n="cta_badge">РАУНД ВІДКРИТО</div>
+                <h2 class="cta-title" data-i18n="cta_title">Станьте Інвестором AETHERIS Automotive</h2>
+                <p class="cta-text" data-i18n="cta_desc">
+                    Ми шукаємо стратегічних інвесторів та партнерів для фінансування 6-місячного циклу створення MVP ($220,000). Отримайте повний Pitch Deck та фінансову модель.
+                </p>
+
+                <form class="contact-form" id="investorForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-row">
+                        <input type="text" id="investorName" placeholder="Ваше ім'я / Your Name" required>
+                        <input type="email" id="investorEmail" placeholder="Email (e.g. investor@fund.com)" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="investorCompany" placeholder="Фонд / Компанія (Company)">
+                        <select id="investorType">
+                            <option value="angel" data-i18n="opt_angel">Business Angel ($25k - $50k)</option>
+                            <option value="vc" data-i18n="opt_vc">Venture Fund / Lead ($100k+)</option>
+                            <option value="strategic" data-i18n="opt_strategic">Стратегічний партнер (Automotive / Security)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit" data-i18n="btn_request_deck">
+                        Запитати Pitch Deck & Зустріч
+                    </button>
+                </form>
+
+                <div id="formSuccess" class="form-success-msg" style="display: none;" data-i18n="form_success">
+                    ✓ Дякуємо! Ваш запит прийнято. Ми надішлемо матеріали на вказану пошту протягом кількох годин.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="brand">
+                    <span class="brand-text">AUTOLAB<span class="accent-dot">.AI</span></span>
+                </div>
+                <p data-i18n="footer_copy">AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. Всі права захищено.</p>
+            </div>
+            <div class="footer-meta">
+                <span class="domain-tag">autolab-ai.com</span>
+                <a href="mailto:invest@autolab-ai.com" class="footer-mail">invest@autolab-ai.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
     <script src="script.js"></script>
 </body>
 </html>
