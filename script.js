@@ -11,7 +11,7 @@ const translations = {
 
         hero_badge: "MVP РАУНД • $220,000 • 6 МІСЯЦІВ",
         hero_title: "Штучний Інтелект Ситуаційної Безпеки для Автомобілів",
-        hero_subtitle: "AETHERIS Automotive MVP — автономна система кругового огляду з 8 HDR-камерами, 2 радарами та Edge AI. Перетворює розрізнені потоки сенсорів у Living Security Context у реальному часі.",
+        hero_subtitle: "AETHERIS Automotive MVP — автономна система кругового огляду з 3 HDR-камерами, 2 радарами та Edge AI. Перетворює розрізнені потоки сенсорів у Living Security Context у реальному часі.",
         hero_btn_primary: "Інвестиційний Меморандум",
         hero_btn_secondary: "Огляд Архітектури",
 
@@ -45,10 +45,10 @@ const translations = {
         tech_tag: "ТЕХНІЧНИЙ СКЛАД",
         tech_title: "Апаратна та Програмна Архітектура",
         tech_desc: "Використання готових індустріальних компонентів мінімізує R&D ризики та забезпечує максимальну концентрацію на розробці алгоритмів контексту.",
-        tech_sensors_title: "8x HDR Камер + 2 Радари",
-        tech_sensors_desc: "3 передні камери (вузька, середня, ультраширока), 3 задні, 2 бічні з GMSL2 передачею даних. Два 77GHz радари для вимірювання швидкості та відстані.",
+        tech_sensors_title: "3x HDR Камери + 2 Радари",
+        tech_sensors_desc: "Високоякісні HDR-камери з GMSL2 передачею даних. Два 77GHz радари для вимірювання швидкості та відстані.",
         tech_edge_title: "Локальний Edge AI Комп'ютер",
-        tech_edge_desc: "Платформа промислового класу з апаратним прискоренням нейромереж. Локальна обробка 8 потоків у реальному часі без необхідності постійної хмари.",
+        tech_edge_desc: "Платформа промислового класу з апаратним прискоренням нейромереж. Локальна обробка 3 потоків у реальному часі без необхідності постійної хмари.",
         tech_engine_title: "Living Security Context Core",
         tech_engine_desc: "Унікальний рушій відстеження траєкторій, аналізу часових патернів та оцінки ризику. Зіставляє повторювані спостереження на всьому маршруті руху.",
 
@@ -146,7 +146,7 @@ const translations = {
 
         hero_badge: "MVP ROUND • $220,000 • 6 MONTHS",
         hero_title: "Situational Intelligence & Context AI for Autonomous Mobility",
-        hero_subtitle: "AETHERIS Automotive MVP — 360° situational awareness platform powered by 8 HDR cameras, 2 FMCW radars, and Edge AI. Transforming raw sensor streams into real-time Living Security Context.",
+        hero_subtitle: "AETHERIS Automotive MVP — 360° situational awareness platform powered by 3 HDR cameras, 2 FMCW radars, and Edge AI. Transforming raw sensor streams into real-time Living Security Context.",
         hero_btn_primary: "Investment Memorandum",
         hero_btn_secondary: "Architecture Overview",
 
@@ -180,10 +180,10 @@ const translations = {
         tech_tag: "TECHNICAL STACK",
         tech_title: "Hardware & Software Architecture",
         tech_desc: "Built on industrial-grade COTS components to minimize R&D risks and focus core development on patentable situational context algorithms.",
-        tech_sensors_title: "8x HDR Cameras + 2 Radars",
-        tech_sensors_desc: "3 front cameras (narrow, medium, ultra-wide), 3 rear, 2 side cameras via high-speed GMSL2. Dual 77GHz FMCW radars for velocity and distance precision.",
+        tech_sensors_title: "3x HDR Cameras + 2 Radars",
+        tech_sensors_desc: "High-quality HDR cameras with GMSL2 data transmission. Dual 77GHz FMCW radars for velocity and distance precision.",
         tech_edge_title: "On-Board Edge AI Compute",
-        tech_edge_desc: "Industrial-grade hardware with dedicated neural network accelerators. Processing 8 real-time video streams locally with zero cloud latency requirement.",
+        tech_edge_desc: "Industrial-grade hardware with dedicated neural network accelerators. Processing 3 real-time video streams locally with zero cloud latency requirement.",
         tech_engine_title: "Living Security Context Core",
         tech_engine_desc: "Proprietary engine correlating multi-camera trajectories, temporal behavior patterns, and proximity anomalies throughout the vehicle's entire journey.",
 
