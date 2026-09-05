@@ -1,5 +1,7 @@
 body { font-family: sans-serif; margin: 0; padding: 0; }
 header { padding: 20px; background: #333; color: white; }
 nav { display: flex; justify-content: space-between; }
+#hero { padding: 50px; text-align: center; }
 .services-container { display: flex; gap: 20px; justify-content: center; padding: 20px; }
 .service-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; width: 300px; text-align: center; }
+button { cursor: pointer; padding: 5px 10px; }
