@@ -125,14 +125,11 @@ const translations = {
         opt_angel: "Business Angel ($25k - $50k)",
         opt_vc: "Venture Fund / Lead ($100k+)",
         opt_strategic: "Стратегічний партнер (Automotive / Security)",
-        btn_request_deck: "Запитати Pitch Deck & Зустріч",
-        form_success: "✓ Дякуємо! Ваш запит прийнято. Ми надішлемо матеріали на вказану пошту протягом кількох годин.",
-        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. Всі права захищено.",
-        
-        // Auth overlay translations
-        auth_subtitle: "Захищений інвестиційний портал. Введіть пароль доступу.",
-        auth_btn: "Увійти",
-        auth_error: "Невірний пароль. Спробуйте ще раз."
+        btn_request_deck: "Підготувати лист-запит",
+        form_help: "Кнопка підготує лист у вашій поштовій програмі. Надішліть його, щоб передати заявку. Якщо пошта не відкриється, напишіть на invest@autolab-ai.com. Введені дані залишаться у формі.",
+        form_success: "Лист підготовлено, але ще не надіслано. Надішліть його зі своєї поштової програми. Якщо вона не відкрилася, скористайтеся посиланням нижче або напишіть на invest@autolab-ai.com.",
+        form_open_draft: "Відкрити підготовлений лист",
+        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. Всі права захищено."
     },
     en: {
         nav_about: "About Project",
@@ -259,22 +256,26 @@ const translations = {
         opt_angel: "Business Angel ($25k - $50k)",
         opt_vc: "Venture Fund / Lead ($100k+)",
         opt_strategic: "Strategic Partner (Automotive / Security)",
-        btn_request_deck: "Request Pitch Deck & Meeting",
-        form_success: "✓ Thank you! Your request has been received. We will deliver the investor package to your email shortly.",
-        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. All rights reserved.",
-
-        // Auth overlay translations
-        auth_subtitle: "Protected investor portal. Enter access password.",
-        auth_btn: "Login",
-        auth_error: "Incorrect password. Please try again."
+        btn_request_deck: "Prepare email request",
+        form_help: "The button prepares an email in your mail app. Send it to submit your request. If your mail app does not open, email invest@autolab-ai.com. Your entries will stay in the form.",
+        form_success: "Your email is prepared, but has not been sent. Send it from your mail app. If the app did not open, use the link below or email invest@autolab-ai.com.",
+        form_open_draft: "Open prepared email",
+        footer_copy: "AETHERIS Automotive Situational Intelligence Platform. © 2025 AutoLab AI. All rights reserved."
     }
 };
 
-let currentLang = localStorage.getItem('autolab_lang') || 'uk';
+let currentLang = 'uk';
+try {
+    const savedLang = localStorage.getItem('autolab_lang');
+    if (savedLang === 'uk' || savedLang === 'en') currentLang = savedLang;
+} catch (_) {
+    // Language switching and the form also work when storage is blocked.
+}
 
 function switchLanguage(lang) {
+    if (lang !== 'uk' && lang !== 'en') return;
     currentLang = lang;
-    localStorage.setItem('autolab_lang', lang);
+    try { localStorage.setItem('autolab_lang', lang); } catch (_) {}
     document.documentElement.lang = lang;
 
     // Update switcher buttons
@@ -293,10 +294,19 @@ function switchLanguage(lang) {
 
 function handleFormSubmit(e) {
     e.preventDefault();
+    const form = document.getElementById('investorForm');
+    if (!form.reportValidity()) return;
     const name = document.getElementById('investorName').value;
     const email = document.getElementById('investorEmail').value;
     const company = document.getElementById('investorCompany').value;
-    const type = document.getElementById('investorType').value;
+    const profile = document.getElementById('investorType');
+    const type = profile.options[profile.selectedIndex].text;
+
+    // This static site prepares a draft; only the visitor's mail app sends it.
+    const subject = encodeURIComponent(`Investor Inquiry: AETHERIS MVP ($220k Round) - ${name}`);
+    const body = encodeURIComponent(`Hello AutoLab AI Team,\n\nI would like to request the Pitch Deck and schedule an introductory call.\n\nName: ${name}\nEmail: ${email}\nOrganization: ${company}\nInvestor Profile: ${type}\n`);
+    const draftUrl = `mailto:invest@autolab-ai.com?subject=${subject}&body=${body}`;
+    document.getElementById('emailDraft').href = draftUrl;
 
     const successEl = document.getElementById('formSuccess');
     if (successEl) {
@@ -304,48 +314,11 @@ function handleFormSubmit(e) {
         successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // Optional mailto trigger
-    const subject = encodeURIComponent(`Investor Inquiry: AETHERIS MVP ($220k Round) - ${name}`);
-    const body = encodeURIComponent(`Hello AutoLab AI Team,\n\nI would like to request the Pitch Deck and schedule an introductory call.\n\nName: ${name}\nEmail: ${email}\nOrganization: ${company}\nInvestor Profile: ${type}\n`);
-    
-    // Reset form after short delay
-    setTimeout(() => {
-        document.getElementById('investorForm').reset();
-    }, 1500);
+    window.location.href = draftUrl;
 }
 
 // Initial load
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if password protection is passed
-    const isAuth = sessionStorage.getItem('autolab_auth') === 'true';
-    const authOverlay = document.getElementById('authOverlay');
-    
-    if (isAuth) {
-        authOverlay.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    } else {
-        authOverlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
     switchLanguage(currentLang);
 });
-
-// Password verification function
-function handleAuth(e) {
-    e.preventDefault();
-    const passwordInput = document.getElementById('authPassword').value;
-    const authError = document.getElementById('authError');
-    const authOverlay = document.getElementById('authOverlay');
-
-    if (passwordInput === '123123aA') {
-        sessionStorage.setItem('autolab_auth', 'true');
-        authOverlay.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        authError.style.display = 'none';
-    } else {
-        authError.style.display = 'block';
-        document.getElementById('authPassword').value = '';
-    }
-}
 

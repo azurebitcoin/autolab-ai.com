@@ -12,28 +12,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Password Protection Overlay -->
-    <div id="authOverlay" class="auth-overlay">
-        <div class="auth-card">
-            <div class="brand-logo-icon auth-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
-            </div>
-            <h2>AUTOLAB <span class="accent-dot">.AI</span></h2>
-            <p class="auth-subtitle" data-i18n="auth_subtitle">Захищений інвестиційний портал. Введіть пароль доступу.</p>
-            <form onsubmit="handleAuth(event)" class="auth-form">
-                <div class="auth-input-group">
-                    <input type="password" id="authPassword" placeholder="Пароль / Password" required autocomplete="current-password">
-                    <button type="submit" class="btn-primary" data-i18n="auth_btn">Увійти</button>
-                </div>
-                <div id="authError" class="auth-error" style="display: none;" data-i18n="auth_error">Невірний пароль. Спробуйте ще раз.</div>
-            </form>
-        </div>
-    </div>
-
     <!-- Background Glows -->
     <div class="bg-glow glow-1"></div>
     <div class="bg-glow glow-2"></div>
@@ -59,7 +37,7 @@
                 <a href="#features" class="nav-link" data-i18n="nav_features">Функції</a>
                 <a href="#roadmap" class="nav-link" data-i18n="nav_roadmap">План робіт</a>
                 <a href="#budget" class="nav-link" data-i18n="nav_budget">Бюджет</a>
-                <a href="#contact" class="nav-link" data-i18n="nav_contact">Контакти</a>
+                <a href="#invest-cta" class="nav-link" data-i18n="nav_contact">Контакти</a>
             </div>
 
             <div class="nav-actions">
@@ -555,12 +533,15 @@
                         </select>
                     </div>
                     <button type="submit" class="btn-submit" data-i18n="btn_request_deck">
-                        Запитати Pitch Deck & Зустріч
+                        Підготувати лист-запит
                     </button>
                 </form>
 
-                <div id="formSuccess" class="form-success-msg" style="display: none;" data-i18n="form_success">
-                    ✓ Дякуємо! Ваш запит прийнято. Ми надішлемо матеріали на вказану пошту протягом кількох годин.
+                <p data-i18n="form_help">Кнопка підготує лист у вашій поштовій програмі. Надішліть його, щоб передати заявку. Якщо пошта не відкриється, напишіть на invest@autolab-ai.com. Введені дані залишаться у формі.</p>
+                <noscript><p>Для запиту напишіть на <a href="mailto:invest@autolab-ai.com">invest@autolab-ai.com</a>. To request the investor materials, email this address.</p></noscript>
+                <div id="formSuccess" class="form-success-msg" role="status" style="display: none;">
+                    <p data-i18n="form_success">Лист підготовлено, але ще не надіслано. Надішліть його зі своєї поштової програми. Якщо вона не відкрилася, скористайтеся посиланням нижче або напишіть на invest@autolab-ai.com.</p>
+                    <a id="emailDraft" href="mailto:invest@autolab-ai.com" data-i18n="form_open_draft">Відкрити підготовлений лист</a>
                 </div>
             </div>
         </div>
